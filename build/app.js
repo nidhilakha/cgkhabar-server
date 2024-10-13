@@ -29,8 +29,7 @@ exports.app.use(express_form_data_1.default.parse());
 exports.app.use((0, cors_1.default)({
     // origin: process.env.ORIGIN,
     origin: [
-        'https://cgkhabaradminnew.vercel.app/',
-        'http://localhost:3000'
+        'https://cgkhabaradminnew.vercel.app/'
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,

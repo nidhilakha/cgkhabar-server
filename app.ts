@@ -29,8 +29,7 @@ app.use(
   cors({
     // origin: process.env.ORIGIN,
     origin: [
-      'https://cgkhabaradminnew.vercel.app/',
-      'http://localhost:3000'
+      'https://cgkhabaradminnew.vercel.app/'
     ],
 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
