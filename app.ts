@@ -28,12 +28,17 @@ app.use(formData.parse());
 app.use(
   cors({
     // origin: process.env.ORIGIN,
-    origin: 'http://localhost:3000',
+    origin: [
+      'https://cgkhabaradminnew.vercel.app/',
+    ],
+
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204
   })
 );
+
+
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
 	limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).

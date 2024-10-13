@@ -1,11 +1,12 @@
 import express from "express";
 import { createNews, updateNews, getNewsWithBanner,updateNewsBanner,deleteNews, getAllNews, getNewsById,getSomeNews, getLatestNewsByCategory, getNewsWithShorts } from "../controllers/news.controller";
 import { isAuthenticated, authorizeRole } from "../middleware/auth";
+import { updateAccessToken } from "../controllers/user.controller";
 
 
 const newsRouter = express.Router();
 
-newsRouter.post('/create-news', 
+newsRouter.post('/create-news', updateAccessToken,
     isAuthenticated, 
     authorizeRole("admin"), 
     createNews
