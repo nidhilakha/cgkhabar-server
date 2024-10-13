@@ -28,7 +28,10 @@ exports.app.use(express_form_data_1.default.parse());
 // cors cross origin resource sharing
 exports.app.use((0, cors_1.default)({
     // origin: process.env.ORIGIN,
-    origin: 'http://localhost:3000',
+    origin: [
+        'https://cgkhabaradminnew.vercel.app/',
+        'http://localhost:3000'
+    ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     optionsSuccessStatus: 204

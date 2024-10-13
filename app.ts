@@ -30,6 +30,7 @@ app.use(
     // origin: process.env.ORIGIN,
     origin: [
       'https://cgkhabaradminnew.vercel.app/',
+      'http://localhost:3000'
     ],
 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
