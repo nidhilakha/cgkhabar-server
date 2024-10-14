@@ -25,24 +25,21 @@ exports.app.use(express_1.default.json({ limit: "50mb" }));
 // cookie parser
 exports.app.use((0, cookie_parser_1.default)());
 exports.app.use(express_form_data_1.default.parse());
-// cors cross origin resource sharing
+// cors cross-origin resource sharing
 exports.app.use((0, cors_1.default)({
-    // origin: process.env.ORIGIN,
-    origin: [
-        'https://cgkhabaradminnew.vercel.app/'
-    ],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204
+    origin: 'https://cgkhabaradminnew.vercel.app', // allow requests from this origin
+    methods: 'GET,POST,PUT,DELETE', // specify allowed HTTP methods
+    credentials: true // include credentials if needed (for cookies/auth)
 }));
+// rate limiter
 const limiter = (0, express_rate_limit_1.rateLimit)({
     windowMs: 15 * 60 * 1000, // 15 minutes
     limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
     standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
-    // store: ... , // Redis, Memcached, etc. See below.
 });
-// Apply the rate limiting middleware to all requests.
+// Apply the rate limiting middleware to all requests **before the routes**
+exports.app.use(limiter);
 // routes
 exports.app.use("/api/v1", user_route_1.default);
 exports.app.use("/api/v1", course_route_1.default);
@@ -59,11 +56,11 @@ exports.app.get("/test", (req, res, next) => {
         message: "API is working",
     });
 });
-// unknown route
+// unknown route handler
 exports.app.all("*", (req, res, next) => {
     const err = new Error(`Route ${req.originalUrl} not found`);
     err.statusCode = 404;
     next(err);
 });
-exports.app.use(limiter);
+// error handling middleware
 exports.app.use(error_1.ErrorMiddleware);

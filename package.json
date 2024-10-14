@@ -1,22 +1,21 @@
 {
   "name": "server",
   "version": "1.0.0",
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn --transpile-only --project tsconfig.json server.ts",
-    "start":"node build/server.js",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false",
-    "build":"tsc"
+    "start": "node build/server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false",
+    "build": "tsc"
   },
   "author": "nidhi lakha",
   "license": "ISC",
   "description": "",
-  "type":"commonjs",
-  "main":"build/server.js",
-  "engines":{
-    "node":"18.x"
-},
+  "type": "commonjs",
+  "main": "build/server.js",
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie-parser": "^1.4.7",
