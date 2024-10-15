@@ -6,7 +6,7 @@ import { updateAccessToken } from "../controllers/user.controller";
 
 const newsRouter = express.Router();
 
-newsRouter.post('/create-news', updateAccessToken,
+newsRouter.post('/create-news', 
     isAuthenticated, 
     authorizeRole("admin"), 
     createNews
