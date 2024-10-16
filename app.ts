@@ -25,7 +25,7 @@ app.use(formData.parse());
 
 // cors cross-origin resource sharing
 app.use(cors({
-  origin: 'https://cgkhabar-admin.vercel.app', // allow requests from this origin
+  origin: 'https://cgkhabaradminnew.vercel.app', // allow requests from this origin
   methods: 'GET,POST,PUT,DELETE', // specify allowed HTTP methods
   credentials: true // include credentials if needed (for cookies/auth)
 }));
